@@ -5,6 +5,7 @@ namespace HttpServer
 {
     using System;
     using System.IO;
+    using System.Net;
     using System.Security.Cryptography.X509Certificates;
     using System.Threading.Tasks;
     using DotNetty.Codecs.Http;
@@ -49,7 +50,7 @@ namespace HttpServer
                         pipeline.AddLast("handler", new HelloServerHandler());
                     }));
 
-                IChannel bootstrapChannel = await bootstrap.BindAsync(ServerSettings.Port);
+                IChannel bootstrapChannel = await bootstrap.BindAsync(IPAddress.Parse("13.93.147.62"), ServerSettings.Port);
 
                 Console.WriteLine($"Httpd started. Listening on {bootstrapChannel.LocalAddress}");
                 Console.ReadLine();

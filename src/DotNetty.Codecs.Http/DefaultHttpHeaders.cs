@@ -6,6 +6,7 @@ namespace DotNetty.Codecs.Http
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
+    using System.Runtime.CompilerServices;
     using DotNetty.Codecs;
     using DotNetty.Common.Utilities;
 
@@ -285,6 +286,7 @@ namespace DotNetty.Codecs.Http
                 return seq;
             }
 
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             static int ValidateValueChar(ICharSequence seq, int state, char character)
             {
                 /*
